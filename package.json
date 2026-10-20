@@ -1,0 +1,24 @@
+{
+  "name": "admin-hotel-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "shared",
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=server",
+    "dev:all": "concurrently -n \"server,client\" -c \"blue,green\" \"npm run dev --workspace=server\" \"npm run dev --workspace=client\"",
+    "dev:server": "npm run dev --workspace=server",
+    "dev:client": "npm run dev --workspace=client",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "test:db": "supabase test db",
+    "seed:admin": "npm run seed:admin --workspace=server",
+    "seed:demo": "npm run seed:demo --workspace=server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
